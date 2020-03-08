@@ -1,0 +1,38 @@
+************* script de la bd *************
+
+CREATE TABLE ANIMALES(
+ ANI_ID Numeric(30,0) NOT NULL,
+ NOMBRE Varchar NOT NULL,
+ TIPO Varchar NOT NULL,
+)
+;
+
+ALTER TABLE ANIMALES ADD CONSTRAINT Key1 PRIMARY KEY (ANI_ID)
+;
+
+CREATE TABLE UBICACION(
+ UBI_ID Numeric(30,0) NOT NULL,
+ LATITUD Numeric(30,0),
+ LONGITUD Numeric(30,0),
+ TIPO Varchar NOT NULL
+)
+;
+
+ALTER TABLE UBICACION ADD CONSTRAINT Key2 PRIMARY KEY (UBI_ID)
+;
+
+CREATE TABLE UBICACION_ANIMAL(
+ UBI_ANI_ID Numeric(30,0) NOT NULL nextval('ubi_ani_seq'::regclass),
+ ANI_ID Numeric(30,0),
+ UBI_ID Numeric(30,0),
+ CANTIDAD Numeric(30,0)
+ 
+)
+;
+
+ALTER TABLE UBICACION_ANIMAL ADD CONSTRAINT Key3 PRIMARY KEY (UBI_ANI_ID)
+;
+alter table UBICACION_ANIMAL
+  add constraint UBICACION_ANIMAL_ANIMAL
+  foreign key (ANI_ID)
+  references ANIMALES (ANI_ID);
