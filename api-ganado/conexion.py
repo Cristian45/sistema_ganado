@@ -10,9 +10,11 @@ class ConexionData:
         try:
             credenciales = {
                 "dbname": "sds",
-                "user": "sds",
-                "password": "sds",
-                "host": "192.168.99.100",				
+                #"user": "sds",
+                "user": "postgres",
+                #"password": "sds",
+                "password": "postgres",
+                "host": "localhost",				
                 "port": 5432
             }
             self.conexion = psycopg2.connect(**credenciales)
